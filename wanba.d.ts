@@ -10,7 +10,13 @@ export as namespace wanba;
  * @param callback 登录回调，会传入一个布尔值表示是否登录成功
  */
 export function login(loginInfo: any, callback: Function): void;
-export function addDeskIcon(callback: Function, that: any): void;
+/**
+ * 添加桌面图标，请注意，iOS系统下没有回调
+ * @param titleText 图标显示文本
+ * @param success 添加成功回调（iOS系统无），默认传入一个对象参数，该对象的result值：0=>创建桌面快捷方式成功，-1=>url字段为空，-2=>终端拿到的json格式解析出错，
+-3=>icon字段下载到的数据为空，或者下载到的不是图片数据
+ */
+export function addDeskIcon(titleText: string, success: Function): void;
 /**
  * 设置玩吧菜单中分享功能的内容和回调
  * @param title 标题
@@ -48,3 +54,10 @@ export function setPayCloseCallback(close: Function): void;
  * @param price 支付的价格
  */
 export function pay(appid: number, price: number): void;
+/**
+ * 设置剪贴板内容
+ * @param text 文本内容
+ * @param successCallback 复制成功回调
+ * @param failCallback 复制失败回调
+ */
+export function setClipboard(text: string, successCallback: Function, failCallback: Function): void;

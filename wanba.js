@@ -7,14 +7,14 @@ var wanba = {
             callback(loginInfo);
         });
     },
-    addDeskIcon: function (callback, that) {
+    addDeskIcon: function (titleText, success) {
         mqq.ui.addShortcut({
             action: 'web',
+            title: titleText,
             icon: window.OPEN_DATA.appicon,
             url: window.OPEN_DATA.jumpurl,
             callback: function (ret) {
-                alert.log("ret :", ret);
-                callback.bind(that);
+                success(ret)
             }
         });
     },
@@ -56,6 +56,17 @@ var wanba = {
             version: 'v2',
             defaultScore: price,
             appid: appid
+        });
+    },
+    setClipboard: function (text, successCallback, failCallback) {
+        mqq.data.setClipboard({
+            text: text
+        }, function (result) {
+            if (result) {
+                successCallback();
+            } else {
+                failCallback();
+            }
         });
     }
 };
