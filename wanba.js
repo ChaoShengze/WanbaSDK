@@ -32,11 +32,11 @@ var wanba = {
             });
         });
     },
-    share: function (title, desc, imgUrl, callback) {
+    share: function (title, desc, imgUrl, callback, customShareUrl = null) {
         mqq.ui.showShareMenu({
             title: title,
             desc: desc,
-            share_url: window.OPEN_DATA.shareurl,
+            share_url: customShareUrl || window.OPEN_DATA.shareurl,
             image_url: imgUrl,
         }, function (result) {
             callback(result);
@@ -68,5 +68,11 @@ var wanba = {
                 failCallback();
             }
         });
+    },
+    showTips: function (tipText, iconType = 2) {
+        mqq.ui.showTips({
+            text: tipText,
+            iconMode: iconType
+        })
     }
 };

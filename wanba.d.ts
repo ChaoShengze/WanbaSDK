@@ -31,8 +31,9 @@ export function setShareHandle(title: string, desc: string, imgUrl: string, call
  * @param desc 文本内容
  * @param imgUrl 图片地址
  * @param callback 回调函数
+ * @param customShareUrl (可选)自定义的分享url，不设置将使用系统默认的url
  */
-export function share(title: string, desc: string, imgUrl: string, callback: Function): void;
+export function share(title: string, desc: string, imgUrl: string, callback: Function, customShareUrl?: string): void;
 /**
  * 设置支付成功的回调
  * @param success 成功时回调
@@ -61,3 +62,9 @@ export function pay(appid: number, price: number): void;
  * @param failCallback 复制失败回调
  */
 export function setClipboard(text: string, successCallback: Function, failCallback: Function): void;
+/**
+ * 调用Wanba接口显示信息
+ * @param tipText 信息文本
+ * @param iconType 图标类型，默认为2，1：勾选图标，2：空心警告图标
+ */
+export function showTips(tipText: string, iconType?: number);
